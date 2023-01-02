@@ -22,9 +22,7 @@
 
 var removeDuplicates = function(nums) {
     
-    let numsLength = nums.length
     let mySet = new Set(nums)
-    console.log(mySet)
     
     numsIndex = 0
 
