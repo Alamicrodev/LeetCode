@@ -28,7 +28,7 @@ var removeDuplicates = function(nums) {
 
     for (let element of mySet) {
         console.log(element)
-        nums[numsIndex] = element
+        nums[numsIndex] = element 
         numsIndex++; 
     }
 
