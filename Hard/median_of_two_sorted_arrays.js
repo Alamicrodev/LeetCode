@@ -22,19 +22,65 @@
 // -106 <= nums1[i], nums2[i] <= 106
  
 
-// ---------------------- My Solution ----------------------------------
+// ---------------------- My Solution (Breaks Time Complexity) ----------------------------------
 
-var findMedianSortedArrays = function(nums1, nums2) {
-    let joinedArray = [...nums1, ...nums2]
+// var findMedianSortedArrays = function(nums1, nums2) {
+//     let joinedArray = [...nums1, ...nums2]
 
-    let joinedArraySorted = joinedArray.sort((a,z) => a-z)
+//     let joinedArraySorted = joinedArray.sort((a,z) => a-z)
 
-    if (joinedArraySorted.length % 2 == 1) {
-        return joinedArraySorted[Math.ceil((joinedArraySorted.length - 1)/2)]
+//     if (joinedArraySorted.length % 2 == 1) {
+//         return joinedArraySorted[Math.ceil((joinedArraySorted.length - 1)/2)]
+//     }else 
+//     {
+//          let center1 = joinedArraySorted[Math.ceil((joinedArraySorted.length - 1)/2)]
+//          let center2 = joinedArraySorted[Math.floor((joinedArraySorted.length - 1)/2)]
+//          return (center1+center2)/2
+//     }
+
+// };
+
+// ---------------------- My Solution (More Efficient) ----------------------------------
+
+var findMedianSortedArrays = function(nums1, nums2) { 
+    let totalIter = nums1.length + nums2.length - 1
+    let nums1Copy = [...nums1]
+    let nums2Copy = [...nums2]
+    let joinedSortedArray = []
+    let iterVar = 0 
+
+    while (iterVar < totalIter) {
+        if (nums1Copy.length == 0 || nums2Copy.length == 0) {
+            break
+        }
+        if (nums1Copy[0] <= nums2Copy[0]){
+            joinedSortedArray.push(nums1Copy.shift())
+        }
+        else {
+             joinedSortedArray.push(nums2Copy.shift())
+            }
+     } 
+    
+     if (nums1Copy.length != 0) {
+         for (let element of nums1Copy) {
+                joinedSortedArray.push(element)
+         } 
+     }
+
+     if (nums2Copy.length != 0) {
+         for (let element of nums2Copy) {
+                joinedSortedArray.push(element)
+         } 
+     }
+
+
+
+    if (joinedSortedArray.length % 2 == 1) {
+        return joinedSortedArray[Math.ceil((joinedSortedArray.length - 1)/2)]
     }else 
     {
-         let center1 = joinedArraySorted[Math.ceil((joinedArraySorted.length - 1)/2)]
-         let center2 = joinedArraySorted[Math.floor((joinedArraySorted.length - 1)/2)]
+         let center1 = joinedSortedArray[Math.ceil((joinedSortedArray.length - 1)/2)]
+         let center2 = joinedSortedArray[Math.floor((joinedSortedArray.length - 1)/2)]
          return (center1+center2)/2
     }
 
