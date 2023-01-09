@@ -31,7 +31,6 @@
 // 1 <= numRows <= 1000
 
 // ---------------------- My Solution ----------------------------------
-// Note: this algorithm is not the best I hope to improve it in the future
 
 
 var convert = function(s, numRows) {
