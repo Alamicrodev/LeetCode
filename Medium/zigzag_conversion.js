@@ -29,3 +29,52 @@
 // 1 <= s.length <= 1000
 // s consists of English letters (lower-case and upper-case), ',' and '.'.
 // 1 <= numRows <= 1000
+
+// ---------------------- My Solution ----------------------------------
+// Note: this algorithm is not the best I hope to improve it in the future
+
+
+var convert = function(s, numRows) {
+    if (numRows == 1) {
+        return s
+    }
+
+    let array = []
+    for (let x = 0; x < numRows; x++) {
+        array.push([])
+    }
+     
+    let index = 0
+    let rowTracker = 0
+    let columnTracker = 0
+
+    while(index < s.length) {
+
+        if (rowTracker == array.length-1){
+            while(rowTracker != 0 && index < s.length) {
+                array[rowTracker][columnTracker] = s[index]
+                index++;
+                rowTracker--; 
+                columnTracker++;  
+            }
+        }
+        else {
+          array[rowTracker][columnTracker] = s[index]
+          rowTracker++; 
+          index++; 
+        } 
+     }
+
+    
+     let resultString = ""
+
+     array.forEach((childArray) => {
+         childArray.forEach((element) => {
+             if (element != undefined) {
+                 resultString += element
+             }
+         })
+     })
+    
+    return resultString
+};
