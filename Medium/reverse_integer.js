@@ -19,3 +19,27 @@
 
 // ---------------------- My Solution ----------------------------------
 
+var reverse = function(x) {
+    
+    let xString = String(x)
+    let xStringArray = xString.split("")
+    let sign = ""
+
+    if (xStringArray[0] == "-") {
+        xStringArray.shift()
+        xStringArray.reverse()
+        xStringArray.unshift("-")
+    }
+    else {
+        xStringArray.reverse()
+    }
+
+    let result = Number(xStringArray.join(""))
+
+    if (result < -2147483648 || result > 2147483647) {
+        return 0
+    }
+
+    return result
+
+};
