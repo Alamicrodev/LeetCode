@@ -23,3 +23,23 @@
 
 // ---------------------- My Solution ----------------------------------
 
+var searchInsert = function(nums, target, start=0, end=nums.length-1) {
+    if (start >= end) {
+         if (nums[start] >= target) {
+             return start
+         }
+         else {
+             return start+1
+         }
+    }
+
+    let mid = Math.floor((start + end) / 2);
+
+	if (target > nums[mid]) {
+		return searchInsert(nums, target, mid + 1, end);
+	} else if ( target < nums[mid]) {
+		return searchInsert(nums, target, start, mid - 1, );
+	} else {
+		return mid;
+	}
+};
