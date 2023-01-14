@@ -27,3 +27,35 @@
 // 0 <= digits[i] <= 9
 // digits does not contain any leading 0's.
 
+// ---------------------- My Solution ----------------------------------
+
+var plusOne = function(digits) {
+    
+    let pointer = digits.length-1 
+    console.log(pointer)
+     
+    digits[pointer] += 1
+    console.log(digits)
+
+    while (digits[pointer] > 9) {
+        digits[pointer] = 0 
+        if (pointer == 0) {
+            digits.unshift(1)
+            break
+        }
+        digits[pointer - 1] += 1
+        pointer = pointer-1
+
+        if (pointer < 0) {
+            if (digits[0] > 9) {
+                digits[0] = 0
+                digits.shift(1)
+            }
+           break
+        }  
+    }
+
+   
+
+    return digits    
+};
