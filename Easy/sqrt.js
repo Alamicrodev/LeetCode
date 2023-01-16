@@ -44,3 +44,21 @@ var mySqrt = function(x) {
 return num-1 
 
 };
+
+// ---------------------- Better Solution ----------------------------------
+
+let mySqrt = function(x) {
+    if (x==0) {
+        return 0
+    }
+    let root = x 
+    try {
+        while (0.5*(root + (x/root)) != root) {
+            root = 0.5*(root + (x/root))
+        }
+        return root 
+    }
+    catch (err) {
+        return 0
+    }
+}
