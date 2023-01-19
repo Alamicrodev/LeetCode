@@ -31,7 +31,7 @@ var climbStairs = function(n) {
 
     for (let i = 0; i < n; i++) {
         c = a + b
-        a = b
+        a = b 
         b = c
     }
 
