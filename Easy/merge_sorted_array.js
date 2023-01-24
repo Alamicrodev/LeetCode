@@ -46,7 +46,7 @@ var merge = function(nums1, m, nums2, n) {
           nums1.splice(nums1pointer, 0, nums2.shift())
           nums1.pop()
         }
-            nums1pointer += 1
+            nums1pointer += 1 
     }
     return nums1
 };
