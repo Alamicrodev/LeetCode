@@ -56,9 +56,9 @@ var inorderTraversal = function(root) {
        {
            resultArray.push(tourist.val)
            tourist = tourist.right
-       }
+       } 
     
-    }
+    } 
     
     return resultArray
      
