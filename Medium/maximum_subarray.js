@@ -7,7 +7,7 @@
 // Output: 6
 // Explanation: The subarray [4,-1,2,1] has the largest sum 6.
 
-// Example 2:
+// Example 2: 
 // Input: nums = [1]
 // Output: 1
 // Explanation: The subarray [1] has the largest sum 1.
