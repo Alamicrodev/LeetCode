@@ -18,7 +18,7 @@
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
 
-// ---------------------- My Solution ----------------------------------
+// ---------------------- My Solution O(n^2) ----------------------------------
 
 var twoSum = function(nums, target) {
     
@@ -30,4 +30,21 @@ var twoSum = function(nums, target) {
         }
     }
     return null
+};
+
+// ---------------------- My Solution O(n) ----------------------------------
+
+var twoSum = function(nums, target) {
+    
+    let reqSums = {}
+
+    for (let i=0; i < nums.length; i++) {
+        let check = reqSums[target - nums[i]]
+        if (check >= 0) {
+            return [check, i]
+        }
+        else {
+            reqSums[nums[i]] = i 
+        }
+    }
 };
