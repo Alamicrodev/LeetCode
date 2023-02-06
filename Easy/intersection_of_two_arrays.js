@@ -32,7 +32,7 @@ var intersect = function(nums1, nums2) {
                 nums2.splice(k,1)
                 break;
             }
-        }
+        } 
     } 
 
     return resultArray
