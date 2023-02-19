@@ -40,7 +40,7 @@ var threeSumClosest = function(nums, target) {
             else {
                 pointerS++;
             }
-            
+             
         }
     }
     return closestSum
