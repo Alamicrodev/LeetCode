@@ -41,43 +41,41 @@
 
 var isValidSudoku = function(board) {
 
-    // this divides all cubes into single lists 
     let allCubs = [[],[],[],[],[],[],[],[],[]]
     
-    // cheking all rows 
     for (let i = 0; i < board.length; i++) {
-        let rowObj = {}
+        let set = new Set()
         for (let k = 0; k < board[i].length; k++){
-            if (board[i][k] != ".") {
-                if (rowObj[board[i][k]] == 1) {
+            let cell = board[i][k]
+            if (cell != ".") {
+                if (set.has(cell)) {
                     return false 
                 }
                 else {
-                    rowObj[board[i][k]] = 1
+                    set.add(cell)
                 }
             }
 
-            // checks the cube and adds to its list 
             if (Math.trunc(i/3) == 0) {
                 if (Math.trunc(k/3) == 0) {
-                    allCubs[0].push(board[i][k])
+                    allCubs[0].push(cell)
                 }
                 else if (Math.trunc(k/3) == 1) {
-                    allCubs[1].push(board[i][k])
+                    allCubs[1].push(cell)
                 }
                 else if (Math.trunc(k/3) == 2) {
-                    allCubs[2].push(board[i][k])
+                    allCubs[2].push(cell)
                 }
             }
             else if (Math.trunc(i/3) == 1) {
                 if (Math.trunc(k/3) == 0) {
-                    allCubs[3].push(board[i][k])
+                    allCubs[3].push(cell)
                 }
                 else if (Math.trunc(k/3) == 1) {
-                    allCubs[4].push(board[i][k])
+                    allCubs[4].push(cell)
                 }
                 else if (Math.trunc(k/3) == 2) {
-                    allCubs[5].push(board[i][k])
+                    allCubs[5].push(cell)
                 }
             }
             else if (Math.trunc(i/3) == 2) {
@@ -95,32 +93,31 @@ var isValidSudoku = function(board) {
         }
     }
 
-    // checking all columns
     for (let k = 0; k<board[0].length; k++) {
-        let columnObj = {}
+        let set = new Set()
         for (let i = 0; i < board.length; i++) {
-            if (board[i][k] != ".") {
-                if (columnObj[board[i][k]] == 1) {
-                        console.log(i, k, board[i][k])
+            let cell = board[i][k]
+            if (cell != ".") {
+                if (set.has(cell)) {
                         return false 
                     }
                     else {
-                        columnObj[board[i][k]] = 1
+                        set.add(cell)
                     } 
             }
         }
     }
     
-    // checking all individual cubes
     for (let i = 0; i < allCubs.length; i++) {
-        let cubeObj = {}
+        let set = new Set()
         for (let k = 0; k < allCubs[0].length; k++) {
-             if (allCubs[i][k] != ".") {
-                if (cubeObj[allCubs[i][k]] == 1) {
+            let cell = allCubs[i][k]
+             if (cell != ".") {
+                if (set.has(cell)) {
                     return false 
                 }
                 else {
-                    cubeObj[allCubs[i][k]] = 1
+                     set.add(cell)
                 }
             }
         }
