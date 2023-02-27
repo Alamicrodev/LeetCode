@@ -26,6 +26,10 @@
 // ---------------------- My Solution ----------------------------------
 
 var searchMatrix = function(matrix, target) {
+    if (matrix.length == 0) {
+            return false 
+        }
+    
     if (matrix.length == 1) {
           let intArray = matrix[0]
           if (intArray.length == 0) {
@@ -33,6 +37,7 @@ var searchMatrix = function(matrix, target) {
           } 
           
           let centre = Math.floor((intArray.length-1)/2)
+          
           if (intArray[centre] == target) {
               return true 
           }
@@ -46,12 +51,19 @@ var searchMatrix = function(matrix, target) {
 
     }
     else {
-        for (let i = 0; i<matrix.length; i++) {
-            if (target <= matrix[i][matrix[i].length-1]) {
-               return searchMatrix([matrix[i]], target)
-               
-            }
+        let centre = Math.floor((matrix.length-1)/2)
+        
+
+        if (target >= matrix[centre][0] && target <= matrix[centre][matrix[centre].length-1]) {
+            return searchMatrix([matrix[centre]], target)
         }
+        else if (target < matrix[centre][0]) {
+            return searchMatrix(matrix.slice(0,centre), target)
+        }
+        else if (target > matrix[centre][matrix[centre].length-1]) {
+            return searchMatrix(matrix.slice(centre+1,matrix.length), target)
+        }
+        
     }
     return false 
 };
