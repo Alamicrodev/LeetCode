@@ -34,3 +34,46 @@ var preorderTraversal = function(root) {
     return [root.val].concat(preorderTraversal(root.left)).concat(preorderTraversal(root.right))
     
 };
+
+// ---------------------- My Solution (Itterative Approach) ----------------------------------
+
+var preorderTraversal = function(root) {  
+    
+    if (root == null) {
+         return []
+     }
+
+    let traversalArray = []
+    let pointer = root
+    let checkPointStack = []
+
+    while (true) {
+        
+        traversalArray.push(pointer.val)
+
+        if (pointer.left != null) {
+            if (pointer.right != null) {
+               checkPointStack.push(pointer.right)
+            }
+            pointer = pointer.left
+              
+        }
+        else if (pointer.right != null) {
+             pointer = pointer.right 
+        }
+        else {
+           if (checkPointStack.length == 0){
+               break;
+           }
+           else {
+               pointer = checkPointStack.pop()
+           }
+                   
+        }
+       
+    }
+     
+    return traversalArray
+     
+     
+};
