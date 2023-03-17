@@ -19,12 +19,25 @@
 
 // Constraints:
 // The number of nodes in the tree is in the range [0, 100].
-// -100 <= Node.val <= 100
+// -100 <= Node.val <= 100 
  
 
 // Follow up: Recursive solution is trivial, could you do it iteratively?
 
-// ---------------------- My Solution ----------------------------------
+
+// ---------------------- My Solution (Recursive Method) ----------------------------------
+// What is inorder traversal method? 
+// From left to right eg left node > parent > right node
+
+var inorderTraversal = function(root) {
+    if (root == null) {
+        return []
+    }
+
+    return inorderTraversal(root.left).concat([root.val]).concat(inorderTraversal(root.right))
+};
+
+// ---------------------- My Solution (Itterative Method) ----------------------------------
 // Morris Algorithm to traverse a binary tree without recursion
 // You can find the explanation for the Morris Algorithm Here: https://www.youtube.com/watch?v=0ydDMtuvbUY
 
