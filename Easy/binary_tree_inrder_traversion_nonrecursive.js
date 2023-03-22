@@ -25,7 +25,7 @@
 // Follow up: Recursive solution is trivial, could you do it iteratively?
 
 
-// ---------------------- My Solution (Recursive Method) ----------------------------------
+// ---------------------- My Solution (Recursive Method) ---------------------------------- 
 // What is inorder traversal method? 
 // From left to right eg left node > parent > right node
 
