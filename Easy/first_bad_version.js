@@ -54,3 +54,45 @@ var solution = function(isBadVersion) {
         
     };
 };
+
+// ---------------------- My Solution (Binary Search O(Log n)) ----------------------------------
+
+var solution = function(isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function(n) {
+        
+        function binarySearch(start, end) {
+            if (start > end) {
+                return n
+            } 
+            else if (start == end) {
+                return start
+            }
+
+            let mid = Math.trunc((start+end)/2)
+            
+            let checker = isBadVersion(mid) 
+            
+            if (checker && mid == 1) {
+                return 1
+            }
+            else if (checker && isBadVersion(mid-1) == false) {
+                return mid
+            }
+            else if (checker && isBadVersion(mid-1) == true) {
+                return binarySearch(start, mid-1)
+            }
+            else {
+                return binarySearch(mid+1, end)
+            }
+
+        }
+        
+
+        return binarySearch(1, n)
+        
+    };
+};
