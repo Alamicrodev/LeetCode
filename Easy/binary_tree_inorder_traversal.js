@@ -19,7 +19,12 @@
 
 // Follow up: Recursive solution is trivial, could you do it iteratively?
 
+
 // ---------------------- My Solution (Recursive Method) ----------------------------------
+// What is inorder traversal method? 
+// From left to right eg left node > parent > right node
+// The parent is in between left and right get it xd inorder
+
 
 var inorderTraversal = function(root) {
     if (root == null) {
@@ -58,3 +63,47 @@ var inorderTraversal = function(root) {
    return traversalArray 
 
 };
+
+// ---------------------- My Solution (Itterative Method) ----------------------------------
+
+var inorderTraversal = function(root) {
+  
+    if (root == null) {
+        return []
+    }
+  
+    let resultArray = []
+    let stack = []
+    let pointer = root 
+  
+    outerLoop:
+    while(true) {
+        if (pointer.left != null) {
+            stack.push(pointer)
+            pointer = pointer.left
+        }
+        else {
+            resultArray.push(pointer.val) 
+            if (pointer.right != null) {
+                pointer = pointer.right
+            }
+            else {
+                while (stack.length != 0) {
+                     let newPointer = stack.pop()
+                     resultArray.push(newPointer.val)
+                     if (newPointer.right != null) {
+                         pointer = newPointer.right
+                         continue outerLoop
+                      }
+                      else {
+                           continue 
+                      }
+                }
+                   break
+            }
+        }
+    }
+  
+    return resultArray
+  
+  };
