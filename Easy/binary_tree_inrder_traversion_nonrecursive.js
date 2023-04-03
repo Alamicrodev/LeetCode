@@ -28,6 +28,7 @@
 // ---------------------- My Solution (Recursive Method) ---------------------------------- 
 // What is inorder traversal method? 
 // From left to right eg left node > parent > right node
+// The parent is in between left and right get it xd inorder
 
 var inorderTraversal = function(root) {
     if (root == null) {
