@@ -65,6 +65,7 @@ var inorderTraversal = function(root) {
 };
 
 // ---------------------- My Solution (Itterative Method) ----------------------------------
+// for inorder or postorder traversal itterative method we use stack
 
 var inorderTraversal = function(root) {
   

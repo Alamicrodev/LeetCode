@@ -18,6 +18,7 @@
 // -1000 <= Node.val <= 1000
 
 // ---------------------- My Solution ----------------------------------
+// note: always remember that in order to do inorder traversal you need to use a queue
 
 var levelOrder = function(root) {
     if (!root) {
