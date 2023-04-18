@@ -21,7 +21,7 @@
 // -231 <= nums[i] <= 231 - 1
 // 0 <= k <= 105
  
-// ---------------------- My Solution ----------------------------------
+// ---------------------- My Solution O(n) ----------------------------------
 
 var rotate = function(nums, k) {
     
@@ -42,4 +42,34 @@ var rotate = function(nums, k) {
     }
    
     
+};
+
+// ---------------------- My Solution O(1) ----------------------------------
+
+
+var rotate = function(nums, k) {
+    // if the length of k is greater then the length of the array itself we simply 
+    // modulus it until it gets under the array length it won't affect the end result.
+    if (k > nums.length){
+        k = k % nums.length;
+    } 
+    
+    // a function that simply takes indexes and array and reverse the the elements between 
+    // those indexes. 
+    function reverse(start, end, array) {
+        while (start < end) {
+            if (start > end || start == end) {
+                break;
+            }
+              [array[start], array[end]] = [array[end], array[start]]
+              start++;
+              end--;
+        }
+    }
+
+    // now simply reversing the array completely and then reversing the two parts.
+    reverse(0, nums.length-1, nums)
+    reverse(0, k-1, nums)
+    reverse(k, nums.length-1, nums)
+
 };
