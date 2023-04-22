@@ -44,7 +44,7 @@ var rotate = function(nums, k) {
     
 };
 
-// ---------------------- My Solution O(1) ----------------------------------
+// ---------------------- My Solution Better ----------------------------------
 
 
 var rotate = function(nums, k) {
