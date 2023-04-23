@@ -21,7 +21,7 @@
 // 0 <= Node.val <= 100
 // 1 <= n <= sz
 
-// ---------------------- My Solution ----------------------------------
+// ---------------------- My Solution (Two Pointer Algorithm) ----------------------------------
 
 /*
  * Definition for singly-linked list.
@@ -31,47 +31,41 @@
  * }
  */
 
-
 var removeNthFromEnd = function(head, n) {
-    let pointer = head
-    let nodesList = []
-
     
-    while (true){
-        nodesList.push(pointer)
-        if (pointer.next != null) {
-           pointer = pointer.next
-        }
-        else {
-            break
-        }
+    if (head == null) {
+        return null
     }
 
-      
-    let nodeIndextoRemove = nodesList.length-n 
+    let listLength = 1 
+    let pointer = head
 
-    let PreviousNode = nodesList[nodeIndextoRemove-1] 
-    let NextNode = nodesList[nodeIndextoRemove+1]
-
-    if (PreviousNode) {
-        if (NextNode) {
-            PreviousNode.next = NextNode
-        }
-        else {
-            PreviousNode.next = null
-        }
-    }
-    else {
-        if (NextNode) {
-            head = NextNode
-        }
-        else {
-            head = null
-        }
+    while (pointer.next != null) {
+        pointer = pointer.next
+        listLength++; 
     }
 
+
+    let nodeCounter = 1
+    let assasin = head
+    let police = head 
+
+    while(listLength+1 - nodeCounter != n) {
+        police = assasin 
+        assasin = assasin.next
+        nodeCounter++
+    }
+
+   if (police == assasin) {
+       head = head.next
+       return head
+   }
+   else {
+      police.next = assasin.next
+   }
     
     return head
-
-
+    
 };
+
+

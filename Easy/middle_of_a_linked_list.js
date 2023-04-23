@@ -19,22 +19,29 @@
 
 // Note: In the examples it shows list but in code you will recieve an actual linked list. 
 
-// ---------------------- My Solution ----------------------------------
+// ---------------------- My Solution (Double Pointer Algorithm) ----------------------------------
 
 var middleNode = function(head) {
-    
-    let linkedListArray = [head]
-    let pointer = head
 
-    while(pointer.next != null) {
-        linkedListArray.push(pointer.next)
-        pointer = pointer.next 
-         
+    if (head.next == null)
+    {
+        return head
     }
- 
+    
+    let hare = head
+    let snail = head 
 
-    let center = Math.floor((linkedListArray.length/2))
+    while(hare != null) {
+       if (hare.next != null) {
+           hare = hare.next.next
+           snail = snail.next
+       }
+       else {
+           hare = hare.next 
 
-   return linkedListArray[center]
+       }
+    }
+
+    return snail
 
 };
