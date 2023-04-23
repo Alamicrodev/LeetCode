@@ -16,7 +16,7 @@
 
 // Follow up: Could you minimize the total number of operations done?
 
-// ---------------------- My Solution (Using Bubble Sort On^2) ----------------------------------
+// ---------------------- My Solution (On^2) ----------------------------------
 
 var moveZeroes = function(nums) {
     
@@ -29,5 +29,24 @@ var moveZeroes = function(nums) {
         }
 
     }
+};
+
+// ---------------------- My Solution (On) ----------------------------------
+
+var moveZeroes = function(nums, start = 0, end=nums.length-1) {
+    
+
+    let pivotIndex = start
+    
+
+    for (let i =0; i < nums.length; i++) {
+        if (nums[i] != 0) {
+            [nums[i], nums[pivotIndex]] = [nums[pivotIndex], nums[i]]
+            pivotIndex++;
+            
+        } 
+    } 
+
+
 };
 
