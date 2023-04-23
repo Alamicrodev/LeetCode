@@ -31,41 +31,38 @@
  * }
  */
 
+
+// the hare and snail keep a gap of n between them at all times :)
+
 var removeNthFromEnd = function(head, n) {
     
     if (head == null) {
         return null
     }
 
-    let listLength = 1 
-    let pointer = head
-
-    while (pointer.next != null) {
-        pointer = pointer.next
-        listLength++; 
+    function Node(val, next) {
+        this.val = (val===undefined ? 0 : val)
+        this.next = (next===undefined ? null : next)
     }
 
+    let dummy = new Node(undefined, head)
+    let snail = dummy 
+    let hare = head 
+    let distanceCounter = 0
 
-    let nodeCounter = 1
-    let assasin = head
-    let police = head 
-
-    while(listLength+1 - nodeCounter != n) {
-        police = assasin 
-        assasin = assasin.next
-        nodeCounter++
+    while(distanceCounter != n) {
+        hare = hare.next
+        distanceCounter++; 
+    }
+     
+    while (hare != null) {
+        hare = hare.next
+        snail = snail.next
     }
 
-   if (police == assasin) {
-       head = head.next
-       return head
-   }
-   else {
-      police.next = assasin.next
-   }
-    
-    return head
+    snail.next = snail.next.next
+
+    return dummy.next
+
     
 };
-
-
