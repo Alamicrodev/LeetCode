@@ -17,7 +17,7 @@
 // -104 <= Node.val <= 104
 
 // ---------------------- My Solution ----------------------------------
-// A kind of breadth first search? 
+// A kind of depth first search? 
 
 
 function TreeNode(val, left, right) {
