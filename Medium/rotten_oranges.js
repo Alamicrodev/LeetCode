@@ -31,15 +31,18 @@
 
 // ---------------------- My Solution ----------------------------------
 
-
 var orangesRotting = function(grid) {
     
     let queue = []
+    let freshOranges = 0
 
     for (let r = 0; r < grid.length; r++) {
         for (let c = 0; c < grid[0].length; c++) {
             if (grid[r][c] == 2) {
                 queue.push([r,c])
+            }
+            if (grid[r][c] == 1) {
+                freshOranges++
             }
         }
     }
@@ -50,25 +53,29 @@ var orangesRotting = function(grid) {
     while(queue.length != 0) {
         if (queue[0] == "pass"){
             queue.shift()
-            continue;
+            break;
         }
         
         let [r,c] = queue[0]
 
         if (r > 0 && grid[r-1][c] == 1) {
             grid[r-1][c] = 2
+            freshOranges--;
             queue.push([r-1,c])
         }
         if (r < grid.length-1 && grid[r+1][c] == 1) {
             grid[r+1][c] = 2
+            freshOranges--;
             queue.push([r+1,c])
         }
         if (c > 0 && grid[r][c-1] == 1) {
             grid[r][c-1] = 2
+            freshOranges--;
             queue.push([r,c-1])
         }
         if (c < grid[0].length-1 && grid[r][c+1] == 1) {
             grid[r][c+1] = 2
+            freshOranges--;
             queue.push([r,c+1])
         }
          if (queue[1] == "pass") {
@@ -81,12 +88,8 @@ var orangesRotting = function(grid) {
     }
 
 
- for (let r = 0; r < grid.length; r++) {
-        for (let c = 0; c < grid[0].length; c++) {
-            if (grid[r][c] == 1) {
-                return -1
-            }
-        }
+    if (freshOranges > 0) {
+        return -1; 
     }
 
     let result = minuteCount-1>=0? minuteCount-1: 0;
