@@ -22,17 +22,17 @@
 
 var removeDuplicates = function(nums) {
     
-    let mySet = new Set(nums)
+    let ln = 1
+
+    for (let i = 1; i<nums.length; i++) {
+        if (nums[i] == nums[ln-1]) {
+ 
+        }
+        else {
+            [nums[i], nums[ln]] = [nums[ln], nums[i]] 
+            ln++; 
+        }
+    } 
     
-    numsIndex = 0
-
-    for (let element of mySet) {
-        console.log(element)
-        nums[numsIndex] = element 
-        numsIndex++; 
-    }
-
-    let k = numsIndex; 
-
-return k 
+ return ln
 };
