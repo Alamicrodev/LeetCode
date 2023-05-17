@@ -43,22 +43,23 @@
 // 0 <= val <= 100
 
 // ---------------------- My Solution ----------------------------------
-
-var removeElement = function(nums, val) {
     
-    let numsIndex = 0
-    let counter = 0
+    var removeElement = function(nums, val) {
+
+        let startPointer = 0; 
+        let endPointer = nums.length-1; 
+      
+        while(startPointer <= endPointer) {
+            if (nums[startPointer] == val) {
+                [nums[startPointer], nums[endPointer]] = [nums[endPointer], nums[startPointer]]
+                endPointer--; 
+            }
+            else {
+                startPointer++; 
+            }
+      
+        }
+      
+        return startPointer; 
+      };
   
-     while(numsIndex < nums.length) {
-         if (nums[numsIndex] == val) {
-             nums.splice(numsIndex, 1)
-             counter++ 
-             nums.push("_")
-             continue
-         }
-         numsIndex++; 
-     }
-  
-       
-      return nums.length-counter;
-  };
