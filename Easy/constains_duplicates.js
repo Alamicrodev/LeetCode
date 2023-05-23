@@ -18,12 +18,29 @@
 // -109 <= nums[i] <= 109
 
 // ---------------------- My Solution ----------------------------------
+// uses hash map
 
 var containsDuplicate = function(nums) {
     let numsCounter = {}
     for (let x = 0; x <= nums.length; x++) {
         if (!numsCounter[nums[x]]){
             numsCounter[nums[x]] = 1
+        } 
+        else {
+            return true 
+        }
+    }
+    return false
+};
+
+// ---------------------- My Solution (improved) ----------------------------------
+// uses hashset
+
+var containsDuplicate = function(nums) {
+    let numsSet = new Set()
+    for (let x = 0; x <= nums.length; x++) {
+        if (!numsSet.has(nums[x])){
+            numsSet.add(nums[x])
         } 
         else {
             return true 

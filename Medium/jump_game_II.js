@@ -25,9 +25,14 @@
 
 var jump = function(nums) {
     
+    // goal is the last element of array
     let goal = nums.length-1
     let round = 0
 
+    // each time we find an element that can reach the last element we update the goal
+    // to that element and increment the rounds and start again.
+    // we will keep doing that until goal becomes 0 itself and then we will stop. 
+    // by now we would have the ammount of rounds. 
 
     while(goal != 0) {
        for(let i = 0; i<goal; i++) {
