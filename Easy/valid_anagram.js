@@ -16,32 +16,37 @@
 
 var isAnagram = function(s, t) {
     
-    let charsObj = {}
+    
+    if (s.length != t.length) {
+        return false
+    }
+    
+    let charsObjs = {}
+    let charsObjt = {}
 
     for (let i = 0; i < s.length; i++) {
-        if (charsObj[s[i]] >= 1) {
-            charsObj[s[i]]++;
+        if (charsObjs[s[i]] >= 1) {
+            charsObjs[s[i]]++;
         }
         else {
-            charsObj[s[i]] = 1; 
+            charsObjs[s[i]] = 1; 
+        }
+
+        if (charsObjt[t[i]] >= 1) {
+            charsObjt[t[i]]++;
+        }
+        else {
+            charsObjt[t[i]] = 1;
         }
     }
 
-    for (let i = 0; i < t.length; i++) {
-         if (charsObj[t[i]] >= 1) {
-            charsObj[t[i]]--;
-        }
-        else {
-            return false 
-        }
-    }
-
-    for (let key of Object.keys(charsObj)) {
-        if (charsObj[key] != 0)
+    for (let key of Object.keys(charsObjs)) {
+        if (charsObjs[key] != charsObjt[key])
         {
             return false 
         }
     }
 
     return true 
+    
 };

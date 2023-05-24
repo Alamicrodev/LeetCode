@@ -35,6 +35,7 @@ var containsDuplicate = function(nums) {
 
 // ---------------------- My Solution (improved) ----------------------------------
 // uses hashset
+// the js built in set is a hashset and not just an ordinary set. 
 
 var containsDuplicate = function(nums) {
     let numsSet = new Set()
