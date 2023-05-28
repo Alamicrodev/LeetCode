@@ -49,3 +49,34 @@ var productExceptSelf = function(nums) {
  
      return results
  };
+
+//Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+
+
+// ---------------------- My Solution (space complexity O(1)) ----------------------------------
+//note: we do not consider the output array to be an extra provision of space. 
+
+var productExceptSelf = function(nums) {
+    
+    let outputArray = []
+    
+    for (let i = 0; i < nums.length; i++) {
+        if (i==0) {
+            outputArray[i] = 1
+            continue;  
+        }
+    
+        outputArray[i] = outputArray[i-1]*nums[i-1]
+    }
+    
+    let postfixProduct = 1
+    
+    for (let i= nums.length-1; i>=0; i--) {
+    
+        outputArray[i] = outputArray[i]*postfixProduct; 
+        postfixProduct *= nums[i]
+    }
+    
+    return outputArray
+    
+    };
