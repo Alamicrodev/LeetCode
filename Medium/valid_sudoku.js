@@ -125,3 +125,59 @@ var isValidSudoku = function(board) {
 
 return true 
 };
+
+// ---------------------- My Solution O(n^2) Improved ----------------------------------
+
+var isValidSudoku = function(board) {
+
+    let hashCubes = {}
+    
+    for (let i = 0; i < board.length; i++) {
+        let set = new Set()
+        for (let k = 0; k < board[i].length; k++){
+            let cell = board[i][k]
+            if (cell != ".") {
+                if (set.has(cell)) {
+                    return false 
+                }
+                else {
+                    set.add(cell)
+                }
+            }
+
+            if (cell != ".") {
+            if (hashCubes[[Math.trunc(i/3), Math.trunc(k/3)]]) {
+                if (hashCubes[[Math.trunc(i/3), Math.trunc(k/3)]].has(cell)) {
+                    return false
+                }
+                else {
+                    hashCubes[[Math.trunc(i/3), Math.trunc(k/3)]].add(cell)
+                }
+            }  
+            else {
+                hashCubes[[Math.trunc(i/3), Math.trunc(k/3)]] = new Set()
+                hashCubes[[Math.trunc(i/3), Math.trunc(k/3)]].add(cell)
+            }
+            }
+           
+        }
+    }
+
+    for (let k = 0; k<board[0].length; k++) {
+        let set = new Set()
+        for (let i = 0; i < board.length; i++) {
+            let cell = board[i][k]
+            if (cell != ".") {
+                if (set.has(cell)) {
+                        return false 
+                    }
+                    else {
+                        set.add(cell)
+                    } 
+            }
+        }
+    }
+  
+
+return true 
+};
