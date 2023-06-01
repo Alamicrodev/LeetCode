@@ -18,14 +18,28 @@
 
 
 def encode(strs):
-    return ";:;".join(strs)
-
-    
+    outputString = ""
+    for word in strs:
+        outputString = outputString+str(len(word))+"#"+word
+    return outputString
 
 def decode(str):
-    return str.split(";:;")
+    wordArray = []
+    x = 0
+    while x < len(str):
+        try: 
+            j = x 
+            while str[j] != "#":
+                j += 1;  
+            wordCount = int(str[x:j])
+            wordArray.append(str[j+1:j+1+wordCount])
+            x = j+1+wordCount
+        except:
+            x+=1
+            continue
+    return wordArray
     
-
-print(decode(encode(["happy", "crazy", "wierdd", ";", "join"])))
+print(encode(["happy", "crazy", "wierdd", ";", "joiiiiiiiiiiiiiin"]))
+print(decode(encode(["happy", "crazy", "wierdd", ";", "joiiiiiiiiiiiiiin"])))
 
 
