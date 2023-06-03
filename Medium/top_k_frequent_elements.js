@@ -19,6 +19,7 @@
 // Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 
 // ---------------------- My Solution ----------------------------------
+// Uses a form of counting sort.
 
 var topKFrequent = function(nums, k) {
     
