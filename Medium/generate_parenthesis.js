@@ -16,28 +16,40 @@
 
 var generateParenthesis = function(n) {
     
-    var Parenth = []
+    var stack = []
     var output = []
 
     
     function generateEntry(open, closed) {
         
+        // if open and closed are same and are equal to n this means we have found a valid entry.
+        // so we convert the stack to a string and add it to output. 
         if (open == closed && open == n) {
-            output.push(Parenth.join(""))
+            output.push(stack.join(""))
             return
         }
 
+        // At each point we have two possibilities:
+        // Add ( only if total open are less than n. 
+        // Add ) only if the total close are less than total open. 
+
+        // if total open are less than n. We add ( and call the function again. 
+        // once it returns we cancel our decision by popping because we want to go to
+        // the other possible path. 
         if (open < n){
-            Parenth.push("(")
+            stack.push("(")
             generateEntry(open+1, closed)
-            Parenth.pop()
+            stack.pop()
         }
 
+        // the other possible path is adding a ) if the total closed < total open. 
+        // we do that and call the function again. 
+        // We pop because when we go back we do not want problems. 
         if (closed < open)
         {
-            Parenth.push(")")
+            stack.push(")")
             generateEntry(open, closed+1)
-            Parenth.pop()
+            stack.pop()
         }
 
     }
