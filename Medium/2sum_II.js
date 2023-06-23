@@ -25,25 +25,23 @@
 
 // ---------------------- My Solution ----------------------------------
 
-
 var twoSum = function(numbers, target) {
-    let startPointer = 0
-    let endPointer = numbers.length-1 
 
-    while(startPointer < endPointer) {
-        let sum = numbers[startPointer] + numbers[endPointer]
-        if (sum == target) {
-            return [startPointer+1, endPointer+1] 
-        }
-        else if (sum < target) {
-            startPointer++;
-        }
-        else if (sum > target) {
-            endPointer--;
-        }
+    let pointerA = 0
+    let pointerB = numbers.length-1 
 
-    }
+    while(numbers[pointerA] + numbers[pointerB] != target) {
+        if (numbers[pointerA] + numbers[pointerB] < target) {
+            pointerA++; 
+            continue; 
+        }
+        if (numbers[pointerA] + numbers[pointerB] > target) {
+            pointerB--; 
+            continue; 
+        }
+    }   
 
-    return false
+
+    return [pointerA+1, pointerB+1]
 
 };
