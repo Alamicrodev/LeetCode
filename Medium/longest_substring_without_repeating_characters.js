@@ -17,8 +17,40 @@
 // Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
  
 
-// ---------------------- My Solution ----------------------------------
 
+// ---------------------- My Solution (O(n)) ----------------------------------
+// Uses a set
+
+var lengthOfLongestSubstring = function(s) {
+   
+    let pointerA = 0 
+    let pointerB = 0 
+    let lonSub = 0 
+     
+     let set = new Set()
+     
+     while(pointerB < s.length) {
+         if (set.has(s[pointerB])) {
+             set.delete(s[pointerA])
+             pointerA++; 
+         } 
+         else {
+             set.add(s[pointerB])
+             pointerB++; 
+         }
+         if (pointerB-pointerA > lonSub) {
+             lonSub = pointerB-pointerA; 
+         }
+     }
+     
+     return lonSub
+  
+  };
+
+
+
+// ---------------------- My Solution ----------------------------------
+// Old solution with longer time complexity 
 
 var lengthOfLongestSubstring = function(s) {
     let uniqueChar = []
@@ -40,3 +72,4 @@ var lengthOfLongestSubstring = function(s) {
     } 
     return length
 };
+
