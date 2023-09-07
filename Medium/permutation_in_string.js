@@ -74,3 +74,65 @@ var checkInclusion = function(s1, s2) {
    return false
 
 };
+
+// ---------------------- Better Solution [O(26*n)]  ----------------------------------
+// Sliding Window Algorithm 
+// Remembers matches
+
+var checkInclusion = function(s1, s2) {
+
+  if (s1.length > s2.length) {
+      return false; 
+  }
+  
+  let s1Map = new Array(26);
+  s1Map.fill(0, 0, 26);
+  let windowMap = new Array(26); 
+  windowMap.fill(0, 0, 26);
+
+  for (let i = 0; i<s1.length; i++) {
+      s1Map[s1[i].charCodeAt(0)-97] += 1; 
+      windowMap[s2[i].charCodeAt(0)-97] += 1; 
+  }
+
+  let matches = 0;
+
+  for (let i =0; i < 26; i++){
+      if (s1Map[i] == windowMap[i]) {
+          matches++; 
+      }
+  } 
+
+  let p1 = 0; 
+  let p2 = s1.length; 
+
+  while(p2 < s2.length){
+     if (matches == 26) {
+         return true
+     }
+      
+
+     let index = s2[p2].charCodeAt(0)-97;
+     windowMap[index]+= 1; 
+     if (s1Map[index] == windowMap[index]) {
+         matches++; 
+     }
+     else if (s1Map[index]+1 == windowMap[index]) {
+         matches--;
+     }
+      
+     index = s2[p1].charCodeAt(0)-97;
+     windowMap[index] -= 1; 
+     if (s1Map[index] == windowMap[index]) {
+         matches++; 
+     }
+     else if (s1Map[index]-1 == windowMap[index]) {
+         matches--;
+     }
+
+      p1++; 
+      p2++; 
+   }
+
+  return (matches == 26)
+};
