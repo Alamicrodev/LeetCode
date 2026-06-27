@@ -16,7 +16,7 @@
 
 // ---------------------- My Solution ----------------------------------
 
-var addBinary = function(a, b) {
+let addBinary = function(a, b) {
     
     if (a.length > b.length) {
         b = b.padStart(a.length, "0")
