@@ -50,7 +50,7 @@ const hasDuplicateImproved = function(nums : number[]): boolean {
                numSet.add(nums[i])
            }
      }
-
+ 
     return false 
 }
 
