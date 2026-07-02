@@ -29,7 +29,7 @@ def topKFrequent(self, nums: List[int], k: int) -> List[int]:
             else:
                 numberCounter[num] = 1
         
-        frequency = ["-"] * (len(nums)+1)
+        frequency = ["-"] * (len(nums)+1)    #an array with '-'s of length nums+1
         print(frequency)
 
         for key in numberCounter:
