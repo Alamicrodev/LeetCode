@@ -38,8 +38,8 @@
 // ---------------------- My Solution ----------------------------------
 // We first combine [position, speed] into a single array.  
 // The solution uses sorting, so we then sort this array of tuples lowest position to highest. 
-// We calculate (target-position)/speed to calculate the time it takes to reach the target. Looping from highest to lowest positions.
-// Finally, we push the the car[position, speed, reachin] into a resultStack, only if: the reachin of the last pushed car is > the current car. (because it would make it a different fleet)
+// We calculate (target-position)/speed to calculate the time it takes to reach the target. Looping from highest to lowest(right to left) positions.
+// Finally, we push the the car[position, speed, reachin] into a resultStack, only if: the reachin of the last pushed car is < the current car. (otherwise this car would catch up to that car and become the same fleet)
 // in the end, we simply return the length of the resultStack. 
 
 function carFleet(target: number, position: number[], speed: number[]): number {
