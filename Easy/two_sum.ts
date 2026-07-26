@@ -19,6 +19,8 @@
 // Output: [0,1]
 
 // ---------------------- My Solution O(n) ----------------------------------
+// Use a hashmap to store the requiredAtIndex where required value is the key, and the index is the value. 
+// later if we find that value, we simply use hashMap to get index where it is required, and we combine indexes to get the answer.
 
 class Solution {
     /**
